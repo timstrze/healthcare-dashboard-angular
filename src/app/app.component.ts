@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [NavigationBarComponent, RouterOutlet, LoadingSpinnerComponent],
+  template: `
+    <app-loading-spinner />
+    <app-navigation-bar />
+    <router-outlet></router-outlet>
+  `
 })
-export class AppComponent {
-  title = 'health-dashboard-ng19';
-}
+export class AppComponent {}

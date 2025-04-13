@@ -1,0 +1,13 @@
+<h4>Medication & Therapy Schedule</h4>
+<daypilot-calendar [config]="config" [events]="events"></daypilot-calendar>
+<ng-template #eventModal let-modal>
+  <div [class]="getModalHeaderClass()">
+    <h5 class="modal-title">{{ selectedEvent?.text }}</h5>
+    <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <p><strong>Start:</strong> {{ selectedEvent?.start }}</p>
+    <p><strong>End:</strong> {{ selectedEvent?.end }}</p>
+    <p *ngIf="selectedEvent?.description"><strong>Description:</strong> {{ selectedEvent?.description }}</p>
+  </div>
+</ng-template>

@@ -1,0 +1,25 @@
+<div class="container-fluid p-4">
+  <div class="row g-3">
+    <div class="col-md-4"><app-heart-monitor /></div>
+
+    <div class="col-md-2">
+      <app-patient-pie-chart />
+    </div>
+
+    <div class="col-md-6">
+      <app-medication-therapy-schedule />
+    </div>
+
+    <div class="col-md-6">
+      <app-vitals-dashboard (vitalSelected)="selectedVital = $event" />
+    </div>
+
+    <div class="col-md-6" *ngIf="selectedVital === 'Blood Pressure'">
+      <app-blood-pressure-chart />
+    </div>
+
+    <div class="col-md-6" *ngIf="selectedVital === 'Body Temperature'">
+      <app-temp-chart />
+    </div>
+  </div>
+</div>

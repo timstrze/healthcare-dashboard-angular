@@ -1,0 +1,20 @@
+.card {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.dashboard-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid #aaa;
+  cursor: pointer;
+}
+.dashboard-item.selected {
+  background-color: lightblue;
+}
+.dashboard-item:last-child {
+  border-bottom: none;
+}

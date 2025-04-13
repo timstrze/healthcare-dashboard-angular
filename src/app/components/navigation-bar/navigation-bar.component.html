@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <svg width="32" height="32" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" fill="none" style="margin-top: -10px;">
+        <path d="M100 180s-70-40-70-90c0-30 20-50 45-50 15 0 25 10 25 10s10-10 25-10c25 0 45 20 45 50 0 50-70 90-70 90z" fill="#000000"/>
+        <rect x="90" y="70" width="20" height="60" rx="2" fill="#FFFFFF"/>
+        <rect x="70" y="90" width="60" height="20" rx="2" fill="#FFFFFF"/>
+      </svg>
+      <span class="fs-5 fw-semibold">HealthFirst</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/patients">Patients</a>
+        </li>
+        <li ngbDropdown class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="settingsDropdown" ngbDropdownToggle role="button">
+            Settings
+          </a>
+          <ul ngbDropdownMenu class="dropdown-menu dropdown-menu-end" aria-labelledby="settingsDropdown">
+            <li><a class="dropdown-item disabled" href="#">Dark Mode (coming soon)</a></li>
+            <li><a class="dropdown-item" href="#">Language</a></li>
+            <li><a class="dropdown-item" href="#">Notification Preferences</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="d-flex align-items-center gap-2 me-3">
+        <span class="fw-semibold">Alerts</span>
+        <app-alert-indicator />
+      </div>
+    </div>
+  </div>
+</nav>
