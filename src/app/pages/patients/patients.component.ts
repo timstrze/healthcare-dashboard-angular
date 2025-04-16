@@ -1,17 +1,30 @@
 import { Component } from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {NgForOf} from '@angular/common';
+import {NgClass, NgForOf} from '@angular/common';
+import {ThemeService} from '../../services/theme.service';
 
 @Component({
   selector: 'app-patients',
   imports: [
     RouterLink,
-    NgForOf
+    NgForOf,
+    NgClass
   ],
   templateUrl: './patients.component.html',
-  styleUrl: './patients.component.css'
+  styles: [`
+    .patients.light {
+      background-color: #ffffff;
+      color: #212529;
+    }
+
+    .patients.dark {
+      background-color: #090d11;
+      color: #f8f9fa;
+    }
+  `]
 })
 export class PatientsComponent {
+  constructor(private themeService: ThemeService) {}
   patients = [
     { id: '001', name: 'Timothy Strzelecki', age: 42, gender: 'Male', condition: 'Stable' },
     { id: '002', name: 'Ava Thompson', age: 36, gender: 'Female', condition: 'Monitoring' },
@@ -37,4 +50,10 @@ export class PatientsComponent {
     { id: '022', name: 'Charlotte Rivera', age: 31, gender: 'Female', condition: 'Stable' },
     { id: '023', name: 'Henry Brooks', age: 59, gender: 'Male', condition: 'Critical' }
   ];
-}
+  theme: 'light' | 'dark' = 'light';
+
+  ngOnInit(): void {
+    this.themeService.theme$.subscribe(theme => {
+      this.theme = theme;
+    });
+  }}

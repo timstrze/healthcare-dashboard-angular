@@ -1,1 +1,65 @@
-<p>reports works!</p>
+<div class="reports" [ngClass]="theme">
+
+  <div class="container py-4" [ngClass]="theme">
+    <button class="btn float-end mb-3"
+            [ngClass]="theme === 'dark' ? 'btn-outline-light' : 'btn-outline-primary'"
+            (click)="downloadReportAsPDF()">Download Report</button>
+    <h2 class="mb-4">Patient Summary Report</h2>
+
+    <div id="reportContent">
+      <div class="card mb-3" [ngClass]="theme">
+        <div class="card-header" [ngClass]="theme">Patient Information</div>
+        <div class="card-body d-flex align-items-start gap-3" [ngClass]="theme">
+          <img src="../../../assets/profile-picture.jpg"
+               style="height: 100px; width: 100px; object-fit: cover; border-radius: 0.25rem;"
+               class="img-thumbnail"
+               alt="Profile Picture" />
+          <div>
+            <h6 class="card-title mb-2">Timothy Strzelecki</h6>
+            <ul class="list-unstyled small mb-0" style="margin-top: 0.25rem; color: inherit;">
+              <li style="padding: 2px 0;"><strong>Age:</strong> 42</li>
+              <li style="padding: 2px 0;"><strong>Weight:</strong> 180 lbs</li>
+              <li style="padding: 2px 0;"><strong>Height:</strong> 5'11"</li>
+              <li style="padding: 2px 0;"><strong>Blood Type:</strong> O+</li>
+              <li style="padding: 2px 0;"><strong>Patient ID:</strong> 001256</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-3 mb-3" [ngClass]="theme">
+        <div class="card-header" [ngClass]="theme">Doctor's Notes</div>
+        <div class="card-body" [ngClass]="theme">
+          <ul class="list-group mb-0">
+            <li class="list-group-item" *ngFor="let note of notes">
+              <small class="text-muted d-block">{{ note.time }}</small>
+              <span>{{ note.text }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card mb-3" [ngClass]="theme">
+        <div class="card-header" [ngClass]="theme">Vital Statistics</div>
+        <div class="card-body" [ngClass]="theme">
+          <p><strong>Heart Rate:</strong> {{ patientStats.heartRate }} bpm</p>
+          <p><strong>Temperature:</strong> {{ patientStats.temperature }} °F</p>
+          <p><strong>Blood Pressure:</strong> {{ patientStats.bloodPressure }}</p>
+          <p><strong>Oxygen Rate:</strong> {{ patientStats.oxygenRate }}%</p>
+          <p><strong>Respiration Rate:</strong> {{ patientStats.respirationRate }} breaths/min</p>
+        </div>
+      </div>
+
+      <div class="card" [ngClass]="theme">
+        <div class="card-header" [ngClass]="theme">Medication and Therapy Schedule</div>
+        <div class="card-body" [ngClass]="theme">
+          <ul class="list-group">
+            <li *ngFor="let item of medicationSchedule" class="list-group-item">
+              <strong>{{ item.time }}:</strong> {{ item.name }} ({{ item.type }})
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

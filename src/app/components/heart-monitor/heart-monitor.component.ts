@@ -1,17 +1,31 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-heart-monitor',
   standalone: true,
   templateUrl: './heart-monitor.component.html',
+  imports: [
+    NgClass
+  ],
   styles: [`
     .heart-monitor {
-      background-color: #0c1a26;
-      color: #e4e4dc;
       padding: 1rem;
       border-radius: 12px;
       font-size: 1.2rem;
       border: 1px solid #ccc;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .heart-monitor.light {
+      background-color: #ffffff;
+      color: #1a1a1a;
+    }
+
+    .heart-monitor.dark {
+      background-color: #1e2a38;
+      color: #f8f9fa;
+      border-color: #3a3f44;
     }
 
     .pulse {
@@ -34,4 +48,6 @@ import { Component } from '@angular/core';
     }
   `]
 })
-export class HeartMonitorComponent {}
+export class HeartMonitorComponent {
+  @Input() theme: 'light' | 'dark' = 'light';
+}

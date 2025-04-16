@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-expand-lg" [ngClass]="theme">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <svg width="32" height="32" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" fill="none" style="margin-top: -10px;">
+      <svg width="32" height="32" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" fill="none" [ngClass]="{ 'dark-stroke': theme === 'dark' }" style="margin-top: -10px;">
         <path d="M100 180s-70-40-70-90c0-30 20-50 45-50 15 0 25 10 25 10s10-10 25-10c25 0 45 20 45 50 0 50-70 90-70 90z" fill="#000000"/>
         <rect x="90" y="70" width="20" height="60" rx="2" fill="#FFFFFF"/>
         <rect x="70" y="90" width="60" height="20" rx="2" fill="#FFFFFF"/>
@@ -19,21 +19,42 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/patients">Patients</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/reports">Reports</a>
+        </li>
         <li ngbDropdown class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="settingsDropdown" ngbDropdownToggle role="button">
             Settings
           </a>
-          <ul ngbDropdownMenu class="dropdown-menu dropdown-menu-end" aria-labelledby="settingsDropdown">
-            <li><a class="dropdown-item disabled" href="#">Dark Mode (coming soon)</a></li>
-            <li><a class="dropdown-item" href="#">Language</a></li>
-            <li><a class="dropdown-item" href="#">Notification Preferences</a></li>
+          <ul ngbDropdownMenu class="dropdown-menu dropdown-menu-end" [ngClass]="theme" aria-labelledby="settingsDropdown">
+            <li><button class="dropdown-item" (click)="toggleTheme()">Switch to {{ theme === 'light' ? 'Dark' : 'Light' }} Mode</button></li>
+<!--            <li><button class="dropdown-item" (click)="openLanguageModal(languageModal)">Language</button></li>-->
           </ul>
         </li>
       </ul>
       <div class="d-flex align-items-center gap-2 me-3">
         <span class="fw-semibold">Alerts</span>
-        <app-alert-indicator />
+        <app-alert-indicator [theme]="theme" />
       </div>
     </div>
   </div>
 </nav>
+<ng-template #languageModal let-modal>
+  <div [ngClass]="theme">
+    <div class="modal-header">
+      <h5 class="modal-title">Select Language</h5>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <select class="form-select" [(ngModel)]="selectedLanguage">
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+      </select>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="modal.dismiss()">Cancel</button>
+      <button class="btn btn-primary" (click)="setLanguage(selectedLanguage); modal.close()">Apply</button>
+    </div>
+  </div>
+</ng-template>

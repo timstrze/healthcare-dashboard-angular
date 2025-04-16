@@ -1,1 +1,6 @@
-<p>respiration-rate-chart works!</p>
+<div class="card mt-1 p-3" [ngClass]="theme">
+  <h5 class="card-header">Respiration Rate Over Time</h5>
+  <div class="card-body resp-chart">
+    <canvas #chartCanvas></canvas>
+  </div>
+</div>
