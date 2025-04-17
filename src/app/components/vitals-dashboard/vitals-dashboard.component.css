@@ -18,3 +18,7 @@
 .dashboard-item:last-child {
   border-bottom: none;
 }
+
+.table-hover {
+  cursor: pointer;
+}

@@ -99,7 +99,7 @@ export class BloodPressureChartComponent implements AfterViewInit, OnChanges {
               color: isDark ? '#ffffff' : '#212529'
             },
             grid: {
-              color: isDark ? '#ffffff' : '#212529'
+              color: isDark ? '#444' : '#ddd'
             }
           },
           x: {
@@ -107,7 +107,7 @@ export class BloodPressureChartComponent implements AfterViewInit, OnChanges {
               color: isDark ? '#ffffff' : '#212529'
             },
             grid: {
-              color: isDark ? '#ffffff' : '#212529'
+              color: isDark ? '#444' : '#ddd'
             }
           }
         },

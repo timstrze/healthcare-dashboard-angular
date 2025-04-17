@@ -1,13 +1,21 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgClass, NgForOf} from '@angular/common';
 import {ThemeService} from '../../services/theme.service';
+import {HeartRateChartComponent} from '../../components/heart-rate-chart/heart-rate-chart.component';
+import {TempChartComponent} from '../../components/temp-chart/temp-chart.component';
+import {OxygenRateChartComponent} from '../../components/oxygen-rate-chart/oxygen-rate-chart.component';
+import {RespirationRateChartComponent} from '../../components/respiration-rate-chart/respiration-rate-chart.component';
 
 @Component({
   standalone: true,
   templateUrl: './reports.component.html',
   imports: [
     NgForOf,
-    NgClass
+    NgClass,
+    HeartRateChartComponent,
+    TempChartComponent,
+    OxygenRateChartComponent,
+    RespirationRateChartComponent
   ],
   styles: [`
   .reports {
@@ -80,8 +88,12 @@ export class ReportsComponent implements OnInit  {
   }
 
   patientStats = {
-    name: 'John Doe',
-    age: 52,
+    name: 'Timothy Strzelecki',
+    age: 42,
+    weight: '180 lbs',
+    height: "5'11\"",
+    bloodType: 'O+',
+    patientId: '001256',
     heartRate: 76,
     temperature: 98.6,
     bloodPressure: '120/80',
@@ -116,7 +128,11 @@ export class ReportsComponent implements OnInit  {
       import('html2pdf.js').then(html2pdf => {
         html2pdf.default()
           .from(report)
-          .set({ filename: 'patient-report.pdf', html2canvas: { scale: 2 } })
+          .set({
+            filename: `${this.patientStats.name.toLowerCase().replace(/ /g, '-')}-report-${new Date().toISOString().replace(/[:.]/g, '-')}.pdf`,
+            pagebreak: {before: '.new-page', avoid: ['h2', 'h3', 'h4', '.field']},
+            html2canvas: { scale: 2 }
+          })
           .save();
       });
     }

@@ -88,7 +88,7 @@ export class TempChartComponent implements AfterViewInit, OnChanges {
               color: isDark ? '#ffffff' : '#212529'
             },
             grid: {
-              color: isDark ? '#ffffff' : '#212529'
+              color: isDark ? '#444' : '#ddd'
             }
           },
           x: {
@@ -96,7 +96,7 @@ export class TempChartComponent implements AfterViewInit, OnChanges {
               color: isDark ? '#ffffff' : '#212529'
             },
             grid: {
-              color: isDark ? '#ffffff' : '#212529'
+              color: isDark ? '#444' : '#ddd'
             }
           }
         },
@@ -104,7 +104,7 @@ export class TempChartComponent implements AfterViewInit, OnChanges {
           legend: {
             display: false,
             labels: {
-              color: isDark ? '#000000' : '#ddd',
+              color: isDark ? '#ffffff' : '#212529'
             }
           }
         },

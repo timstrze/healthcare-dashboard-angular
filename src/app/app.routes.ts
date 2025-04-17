@@ -3,7 +3,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   {
     path: 'patients',
     loadComponent: () => import('./pages/patients/patients.component').then(m => m.PatientsComponent)
@@ -22,5 +23,5 @@ export const routes: Routes = [
     canActivate: [authGuard],
     loadComponent: () => import('./pages/reports/reports.component').then(m => m.ReportsComponent)
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'home' }
 ];
