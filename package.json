@@ -1,5 +1,5 @@
 {
-  "name": "health-first",
+  "name": "health-dashboard-ng19",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -17,6 +17,13 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
+    "@daypilot/daypilot-lite-angular": "^3.32.1",
+    "@ng-bootstrap/ng-bootstrap": "^18.0.0",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
+    "chart.js": "^4.4.8",
+    "html2pdf.js": "^0.10.3",
+    "ng2-charts": "^8.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

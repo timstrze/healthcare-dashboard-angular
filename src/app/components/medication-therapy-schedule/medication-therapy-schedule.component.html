@@ -1,0 +1,31 @@
+<div class="card text-center" [ngClass]="theme" style="height: auto;">
+  <h5 class="card-header">Medication & Therapy Schedule</h5>
+  <div class="card-body">
+    <daypilot-calendar [config]="config" [events]="events"></daypilot-calendar>
+  </div>
+</div>
+
+<ng-template #eventModal let-modal>
+  <div [class]="getModalHeaderClass()">
+    <h5 class="modal-title">{{ selectedEvent?.text }}</h5>
+    <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body" [ngClass]="theme">
+    <div class="mb-3">
+      <strong>Type:</strong>
+      <span [ngClass]="selectedEvent?.barColor === '#2196F3' ? 'text-info' : 'text-success'">
+        {{ selectedEvent?.barColor === '#2196F3' ? 'Therapy' : 'Medication' }}
+      </span>
+    </div>
+    <div class="mb-3">
+      <strong>Start:</strong> {{ selectedEvent?.start | date: 'medium' }}
+    </div>
+    <div class="mb-3">
+      <strong>End:</strong> {{ selectedEvent?.end | date: 'medium' }}
+    </div>
+    <div *ngIf="selectedEvent?.description">
+      <strong>Description:</strong>
+      <p class="mt-1">{{ selectedEvent?.description }}</p>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,26 @@
+<div [ngClass]="'home ' + theme">
+
+  <div class="container-fluid p-4">
+    <div class="row g-3">
+      <div class="col-md-4"><app-heart-monitor [theme]="theme" /></div>
+      <div class="col-md-2"><app-patient-details [theme]="theme" /></div>
+      <div class="col-md-6"><app-medication-therapy-schedule [theme]="theme" /></div>
+      <div class="col-md-6"><app-vitals-dashboard (vitalSelected)="selectedVital = $event" [theme]="theme" /></div>
+      <div class="col-md-6" *ngIf="selectedVital === 'Blood Pressure'">
+        <app-blood-pressure-chart [theme]="theme" />
+      </div>
+      <div class="col-md-6" *ngIf="selectedVital === 'Body Temperature'">
+        <app-temp-chart [theme]="theme" />
+      </div>
+      <div class="col-md-6" *ngIf="selectedVital === 'Oxygen Rate'">
+        <app-oxygen-rate-chart [theme]="theme" />
+      </div>
+      <div class="col-md-6" *ngIf="selectedVital === 'Respiration Rate'">
+        <app-respiration-rate-chart [theme]="theme" />
+      </div>
+      <div class="col-md-6" *ngIf="selectedVital === 'Heart Rate'">
+        <app-heart-rate-chart [theme]="theme" />
+      </div>
+    </div>
+  </div>
+</div>

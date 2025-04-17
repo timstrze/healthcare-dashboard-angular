@@ -1,0 +1,51 @@
+<div class="card text-center" [ngClass]="theme" style="height: auto;">
+  <h5 class="card-header">Patient Details</h5>
+  <div class="card-body">
+    <img src="../../../assets/profile-picture.jpg" style="height: 150px;" class="img-fluid rounded-circle mb-3" alt="Profile Picture" />
+    <h6 class="card-title">Timothy Strzelecki</h6>
+    <ul class="list-unstyled small mb-0" style="margin-top: 0.5rem; color: inherit;">
+      <li style="padding: 2px 0;"><strong>Age:</strong> 42</li>
+      <li style="padding: 2px 0;"><strong>Weight:</strong> 180 lbs</li>
+      <li style="padding: 2px 0;"><strong>Height:</strong> 5'11"</li>
+      <li style="padding: 2px 0;"><strong>Blood Type:</strong> O+</li>
+      <li style="padding: 2px 0;"><strong>Patient ID:</strong> 001256</li>
+    </ul>
+    <button class="btn mt-3" [ngClass]="theme === 'dark' ? 'btn-outline-light' : 'btn-outline-primary'" (click)="openDoctorNotes(doctorNotesModal)">
+      View Doctor's Notes
+    </button>
+
+    <ng-template #doctorNotesModal let-modal>
+      <div [ngClass]="theme">
+        <div class="modal-header rounded-0" [ngClass]="theme === 'dark' ? 'bg-dark text-white' : 'bg-primary text-white'">
+          <h5 class="modal-title">Doctor's Notes</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+        </div>
+        <div class="modal-body" [ngClass]="theme">
+          <h6>Previous Notes</h6>
+          <div class="table-responsive mb-3">
+            <table class="table table-bordered table-sm" [ngClass]="theme === 'dark' ? 'table-dark' : 'table-light'">
+              <thead>
+              <tr>
+                <th scope="col">Time</th>
+                <th scope="col">Note</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let note of notes">
+                <td><small [ngClass]="theme === 'dark' ? 'text-light' : 'text-muted'">{{ note.time }}</small></td>
+                <td>{{ note.text }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <h6>Add New Note</h6>
+          <textarea class="form-control" rows="3" [(ngModel)]="newNote" placeholder="Enter doctor's note here..."></textarea>
+        </div>
+        <div class="modal-footer" [ngClass]="theme">
+          <button type="button" class="btn btn-out" [ngClass]="theme === 'dark' ? 'btn-outline-secondary' : 'btn-outline-secondary'" (click)="modal.close()">Close</button>
+          <button type="button" class="btn" [ngClass]="theme === 'dark' ? 'btn-outline-light' : 'btn-outline-primary'" (click)="addNote();">Add Note</button>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

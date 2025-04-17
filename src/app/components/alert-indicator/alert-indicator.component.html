@@ -1,0 +1,73 @@
+<div class="d-flex align-items-center gap-2">
+  <span
+    class="d-flex justify-content-center align-items-center text-center fw-bold text-white bg-success rounded-circle"
+    style="width: 1.5rem; height: 1.5rem; cursor: pointer;" title="All systems are normal"
+    (click)="openAlertModal(successModal)">3</span>
+  <span class="d-flex justify-content-center align-items-center text-center fw-bold text-dark bg-warning rounded-circle"
+        style="width: 1.75rem; height: 1.75rem; cursor: pointer;" title="Some systems need attention"
+        (click)="openAlertModal(warningModal)">6</span>
+  <span class="d-flex justify-content-center align-items-center text-center fw-bold text-white bg-danger rounded-circle"
+        style="width: 2rem; height: 2rem; cursor: pointer;" title="Critical alerts present"
+        (click)="openAlertModal(alertModal)">2</span>
+</div>
+
+<ng-template #alertModal let-modal>
+  <div [ngClass]="theme">
+    <div class="modal-header bg-danger text-white rounded-0">
+      <h5 class="modal-title">Critical Alerts</h5>
+      <button type="button" class="btn-close btn-close-white" aria-label="Close"
+              (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <ul class="mb-2">
+        <li><strong>Heart rate exceeds safe threshold</strong> <br><small>Time: 14:32 — Tip: Check ECG and administer
+          beta-blocker if prescribed.</small></li>
+        <li><strong>Oxygen saturation critically low</strong> <br><small>Time: 14:30 — Tip: Ensure oxygen supply is
+          connected and check pulse oximeter placement.</small></li>
+      </ul>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #warningModal let-modal>
+  <div [ngClass]="theme">
+    <div class="modal-header bg-warning text-dark rounded-0">
+      <h5 class="modal-title">Warnings</h5>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <ul class="mb-2">
+        <li><strong>Increased body temperature</strong> <br><small>Time: 13:45 — Tip: Monitor for signs of infection and
+          administer fluids.</small></li>
+        <li><strong>Minor heart rate variation</strong> <br><small>Time: 13:40 — Tip: Recheck after 15 minutes; may be
+          due to movement.</small></li>
+        <li><strong>Mild dehydration</strong> <br><small>Time: 13:35 — Tip: Encourage fluid intake if patient is
+          conscious.</small></li>
+        <li><strong>Elevated respiratory rate</strong> <br><small>Time: 13:30 — Tip: Ensure patient is in a comfortable
+          position.</small></li>
+        <li><strong>Irregular sleep pattern</strong> <br><small>Time: 13:20 — Tip: Adjust lighting and reduce noise
+          levels.</small></li>
+        <li><strong>Low activity level</strong> <br><small>Time: 13:10 — Tip: Encourage light movement if
+          approved.</small></li>
+      </ul>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #successModal let-modal>
+  <div [ngClass]="theme">
+    <div class="modal-header bg-success text-white rounded-0">
+      <h5 class="modal-title">All Systems Normal</h5>
+      <button type="button" class="btn-close btn-close-white" aria-label="Close"
+              (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <ul class="mb-2">
+        <li><strong>Vitals stable</strong> <br><small>Time: 14:35 — Tip: Maintain current care routine.</small></li>
+        <li><strong>Oxygen levels normal</strong> <br><small>Time: 14:34 — Tip: Continue monitoring every hour.</small>
+        </li>
+        <li><strong>Heart rate steady</strong> <br><small>Time: 14:33 — Tip: No intervention needed.</small></li>
+      </ul>
+    </div>
+  </div>
+</ng-template>
