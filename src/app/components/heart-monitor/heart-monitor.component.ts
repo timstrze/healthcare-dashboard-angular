@@ -39,7 +39,16 @@ import {NgClass} from '@angular/common';
       margin: 1rem 0;
       padding: 0;
       overflow: hidden;
+      background-image: url('../../../assets/heart-wave-single.svg');
+      background-repeat: repeat-x;
+      background-size: auto 100%;
+      background-position: 0 center;
     }
+
+    .heart-monitor.dark .wave {
+      filter: invert(80%) hue-rotate(180deg);
+    }
+
 
     .wave svg {
       display: block;
