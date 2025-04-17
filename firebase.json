@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "dist/health-dashboard-ng19",
     "ignore": [
       "firebase.json",
       "**/.*",
